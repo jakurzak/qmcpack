@@ -362,7 +362,7 @@ public:
     for (int iw = 0, count = 0; iw < nw; iw++)
       if (isAccepted[iw])
       {
-        ptr_buffer[0][count] = engines[iw].get_ref_psiMinv().device_data();
+        ptr_buffer[0][count] = engines[iw].get_ref_psiMinv().data();
         ptr_buffer[1][count] = const_cast<Value*>(phi_vgl_v.device_data_at(0, iw, 0));
         ptr_buffer[2][count] = mw_temp.device_data() + norb * count;
         ptr_buffer[3][count] = mw_rcopy.device_data() + norb * count;

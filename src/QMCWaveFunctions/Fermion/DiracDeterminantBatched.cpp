@@ -202,7 +202,7 @@ void DiracDeterminantBatched<DET_ENGINE>::mw_evalGrad(const RefVectorWithLeader<
     auto& det = wfc_list.getCastedElement<DiracDeterminantBatched<DET_ENGINE>>(iw);
     // capacity is the size of each vector in the VGL so this advances us to the g then makes
     // an offset into the gradients
-    dpsiM_row_list[iw] = det.psiM_vgl.device_data() + psiM_vgl.capacity() + NumOrbitals * WorkingIndex * DIM;
+    dpsiM_row_list[iw] = det.psiM_vgl.data() + psiM_vgl.capacity() + NumOrbitals * WorkingIndex * DIM;
     engine_list.push_back(det.det_engine_);
   }
 
@@ -277,7 +277,7 @@ void DiracDeterminantBatched<DET_ENGINE>::mw_evalGradWithSpin(
     auto& det = wfc_list.getCastedElement<DiracDeterminantBatched<DET_ENGINE>>(iw);
     // capacity is the size of each vector in the VGL so this advances us to the g then makes
     // an offset into the gradients
-    dpsiM_row_list[iw] = det.psiM_vgl.device_data() + psiM_vgl.capacity() + NumOrbitals * WorkingIndex * DIM;
+    dpsiM_row_list[iw] = det.psiM_vgl.data() + psiM_vgl.capacity() + NumOrbitals * WorkingIndex * DIM;
     engine_list.push_back(det.det_engine_);
   }
 
@@ -500,8 +500,8 @@ void DiracDeterminantBatched<DET_ENGINE>::mw_accept_rejectMove(
     engine_list.push_back(det.det_engine_);
     if (isAccepted[iw])
     {
-      psiM_g_dev_ptr_list[count] = det.psiM_vgl.device_data() + psiM_vgl.capacity() + NumOrbitals * WorkingIndex * DIM;
-      psiM_l_dev_ptr_list[count] = det.psiM_vgl.device_data() + psiM_vgl.capacity() * 4 + NumOrbitals * WorkingIndex;
+      psiM_g_dev_ptr_list[count] = det.psiM_vgl.data() + psiM_vgl.capacity() + NumOrbitals * WorkingIndex * DIM;
+      psiM_l_dev_ptr_list[count] = det.psiM_vgl.data() + psiM_vgl.capacity() * 4 + NumOrbitals * WorkingIndex;
       if (det.curRatio == PsiValue(0))
 
       {

@@ -125,6 +125,7 @@
 #define cudaMemAttachGlobal             hipMemAttachGlobal
 #define cudaMemcpy                      hipMemcpy
 #define cudaMemcpyAsync                 hipMemcpyAsync
+// #define cudaMemcpyAsync(a,b,c,d,e)      (printf("\t%s:%d\n", __FILE__, __LINE__), hipMemcpyAsync(a,b,c,d,e))
 #define cudaMemcpyDeviceToDevice        hipMemcpyDeviceToDevice
 #define cudaMemcpyDeviceToHost          hipMemcpyDeviceToHost
 #define cudaMemcpyHostToDevice          hipMemcpyHostToDevice
